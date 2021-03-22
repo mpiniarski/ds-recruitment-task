@@ -8,6 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@atlaskit/button": "^15.1.5",
+    "@atlaskit/css-reset": "^6.0.5",
+    "@atlaskit/spinner": "^15.0.6",
     "next": "10.0.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
