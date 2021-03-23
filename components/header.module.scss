@@ -1,6 +1,7 @@
 @import "styles/variables";
 
 $height: 80px;
+$menu-item-width: 160px;
 
 .header {
   width: 100%;
@@ -36,7 +37,7 @@ $height: 80px;
 
   .link {
     height: $height;
-    width: 160px;
+    width: $menu-item-width;
 
     display: inline-flex;
     align-items: center;
@@ -52,8 +53,41 @@ $height: 80px;
     }
   }
 }
+
+.mobileMenuButton {
+  display: none;
+  width: 30px;
+
+  color: $global-gray-dark;
+  &:hover {
+    cursor: pointer;
+    color: darken($global-gray-dark, $global-hover-darken);
+  }
+}
+
 @media (max-width: 960px) {
+  .mobileMenuButton {
+    display: block;
+  }
 
+  .nav {
+    height: 100%;
+    position: fixed;
+    right: -($menu-item-width+5px);
+    top: 0;
 
+    padding: $global-spacing-big 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
 
+    border-radius: $global-radius;
+    background-color: $global-gray;
+    border-left: 5px solid $global-gray-medium;
+
+    transition: 0.25s right;
+  }
+}
+
+.nav.visible {
+  right: 0;
 }
