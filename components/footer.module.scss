@@ -1,0 +1,91 @@
+@import "styles/variables";
+
+.footer {
+  width: 100%;
+
+  padding: $global-spacing-medium 2*$global-spacing-big;
+  border-radius: $global-radius;
+  background-color: $global-gray;
+  border-top: 5px solid $global-gray-medium;
+
+  display: grid;
+
+  gap: $global-spacing-medium 0;
+  grid-template:
+            "socialMedia socialMedia" auto
+            "links       text"        auto
+            "copyright   copyright"   20px
+          / auto         40%;
+
+  a {
+    color: $global-gray-dark
+  }
+}
+
+.socialMedia {
+  grid-area: socialMedia;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+
+  .icon {
+    height: 30px;
+    margin: 0 $global-spacing-small;
+    width: auto;
+    color: $global-gray-dark;
+
+    &:hover {
+      cursor: pointer;
+      color: darken($global-gray-dark, $global-hover-darken);
+    }
+  }
+}
+
+.links {
+  grid-area: links;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 40%;
+
+  a {
+    color: $global-gray-dark;
+    &:hover {
+      color: darken($global-gray-dark, $global-hover-darken);
+    }
+  }
+}
+
+.text {
+  grid-area: text;
+  padding: 0 $global-spacing-big;
+}
+
+.copyright {
+  grid-area: copyright;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 1000px) {
+  .footer {
+    grid-template:
+            "links     socialMedia" auto
+            "text      text"        auto
+            "copyright copyright"   20px
+          / auto auto;
+    .links {
+      padding: 0
+    }
+    .text {
+      padding: 0;
+    }
+  }
+}
+

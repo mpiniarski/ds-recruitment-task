@@ -1,27 +1,31 @@
+@import "styles/variables";
+
 $height: 80px;
 
 .header {
   width: 100%;
   min-height: $height;
-  padding: 0 32px;
+  padding: 0 $global-spacing-big;
 
-  border-radius: 6px;
-  background-color: #f5f5f5;
-  border-bottom: 5px solid #e3e3e3;
+  border-radius: $global-radius;
+  background-color: $global-gray;
+  border-bottom: 5px solid $global-gray-medium;
 
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   // Wrap nav on smaller screens if needed
   flex-wrap: wrap;
-  justify-content: flex-start;
 }
 
 .logo {
+  flex-grow: 1;
   height: $height;
-  padding: 8px 0;
+  padding: $global-spacing-small 0;
 }
 
 .nav {
+  flex-grow: 2;
   min-height: $height;
   display: flex;
   flex-direction: row;
@@ -47,4 +51,9 @@ $height: 80px;
       font-weight: 500;
     }
   }
+}
+@media (max-width: 960px) {
+
+
+
 }

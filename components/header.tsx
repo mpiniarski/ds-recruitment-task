@@ -6,10 +6,9 @@ const Header = () =>
       <nav className={styles.nav}>
         <a className={styles.link}>User form</a>
         <a className={styles.link}>User profile</a>
-        <a className={styles.link}>User profile</a>
-        <a className={styles.link}>User profile</a>
-        <a className={styles.link}>User profile</a>
-        <a className={styles.link}>User profile</a>
+        <a className={styles.link}>Other</a>
+        <a className={styles.link}>Menu</a>
+        <a className={styles.link}>Items</a>
       </nav>
   </header>
 
