@@ -12,16 +12,31 @@ import ImagePicker from "components/image-picker";
 import {useMemo} from "react";
 import range from "utils/range";
 import randomInt from "utils/randomInt";
+import {useStorageState} from "react-storage-hooks";
+import isBrowser from "utils/isBrowser";
+import serverSideStorage from "utils/serverSideStorage";
+import {sessionStorageKeys} from "consts"
+import {useRouter} from "next/router";
 
 const ProfileForm = () => {
-  const formSubmit = (data) => console.log(data);
+  const [_, setFormData] = useStorageState<ProfileData>(
+    isBrowser() ? sessionStorage : serverSideStorage,
+    sessionStorageKeys.profileData
+  );
+
   const {showModal} = useModal();
+  const router = useRouter()
 
   const avatars = range(1, 50).map(i => ({url: `images/avatars/${i}.png`}));
   const defaultAvatar = useMemo(() => avatars[randomInt(0, avatars.length - 1)].url, []);
 
   return <div className={styles.container}>
-    <Form<ProfileData> onSubmit={formSubmit}>
+    <Form<ProfileData>
+      onSubmit={(data: ProfileData) => {
+        setFormData(data);
+        router.push("profile")
+      }}
+    >
       {({formProps, getValues}) => {
         return <form {...formProps}>
 
@@ -129,8 +144,7 @@ const ProfileForm = () => {
             Submit
           </Button>
         </form>;
-      }
-      }
+      }}
     </Form>
   </div>
 }

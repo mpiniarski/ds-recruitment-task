@@ -1,3 +1,4 @@
+import Profile from "containers/profile"
 import {useStorageState} from "react-storage-hooks";
 import isBrowser from "utils/isBrowser";
 import serverSideStorage from "utils/serverSideStorage";
@@ -5,23 +6,26 @@ import {sessionStorageKeys} from "consts";
 import {ProfileData} from "pages/profile-form";
 import {useRouter} from "next/router";
 
-const IndexPage = () => {
+
+const ProfilePage = () => {
   const [profileData] = useStorageState<ProfileData>(
     isBrowser() ? sessionStorage : serverSideStorage,
     sessionStorageKeys.profileData
   );
   const router = useRouter()
 
-  if(isBrowser()) {
-    if (profileData === null) {
-      router.replace("profile-form")
-    } else {
-      router.replace("profile")
-    }
+  if(profileData === null ){
+    isBrowser() && router.push("profile-form")
+    return <></>
   }
 
-  return <></>
+  return <main>
+    <h1>
+      Your profile
+    </h1>
+    <Profile profileData={profileData}/>
+  </main>
 
 }
 
-export default IndexPage
+export default ProfilePage
