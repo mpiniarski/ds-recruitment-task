@@ -7,7 +7,7 @@ export type ProfileData = {
   readonly email : string
   readonly phone : string
   readonly birthday : Date
-  readonly about : string
+  readonly about ?: string
   readonly avatarUrl : string
 }
 

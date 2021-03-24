@@ -44,11 +44,12 @@ $menu-item-width: 160px;
     justify-content: center;
 
     text-decoration: none;
-    color: black;
     cursor: pointer;
 
+    color: $global-gray-dark;
+
     &:hover, &.active {
-      color: #000;
+      color: darken($global-gray-dark, $global-hover-darken);
       font-weight: 500;
     }
   }

@@ -19,17 +19,10 @@ const ProfileInfo = ({profileData}: { profileData: ProfileData }) => {
       <dt>Phone number</dt>
       <dd>{profileData.phone}</dd>
 
-      <dt>About</dt>
-      <dd>{profileData.about}
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, tristique et faucibus et, iaculis ut velit. Ut pretium purus tincidunt,
-        porta massa in, sodales lacus. Sed ac feugiat purus, sit amet molestie enim. Donec eu turpis quis velit ullamcorper finibus. Pellentesque at
-        velit nec magna tristique feugiat nec sit amet risus. Maecenas vel sapien ac ipsum commodo rutrum maximus et justo. Donec sapien neque,
-        elementum nec molestie quis, gravida ut turpis.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, tristique et faucibus et, iaculis ut velit. Ut pretium purus tincidunt,
-        porta massa in, sodales lacus. Sed ac feugiat purus, sit amet molestie enim. Donec eu turpis quis velit ullamcorper finibus. Pellentesque at
-        velit nec magna tristique feugiat nec sit amet risus. Maecenas vel sapien ac ipsum commodo rutrum maximus et justo. Donec sapien neque,
-        elementum nec molestie quis, gravida ut turpi
-      </dd>
+      {profileData.about && <>
+          <dt>About</dt>
+          <dd>{profileData.about}</dd>
+      </>}
     </div>
     <div className={styles.avatar}>
       <h3>Avatar:</h3>
