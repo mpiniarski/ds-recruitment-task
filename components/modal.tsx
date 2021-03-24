@@ -23,8 +23,8 @@ export const WithModal = ({children}: { children: any }) => {
       }
     }}>
       {children}
-      {modals && [...modals].map(it =>
-        <Modal onClose={()=>closeModal(it)}>
+      {modals && [...modals].map((it,index) =>
+        <Modal key={index} onClose={()=>closeModal(it)}>
           {it}
         </Modal>
       )}
