@@ -26,7 +26,7 @@ const ProfileInfo = ({profileData}: { profileData: ProfileData }) => {
     </div>
     <div className={styles.avatar}>
       <h3>Avatar:</h3>
-      <img src={profileData.avatarUrl} alt={"Avatar"}/>
+      <img src={profileData.avatarUrl} alt={"Avatar"} width={1} height={1}/>
     </div>
   </div>
 }

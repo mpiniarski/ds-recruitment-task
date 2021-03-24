@@ -17,9 +17,16 @@ const ImagePicker = <T extends Image>({onSelect, images}: { onSelect: (image: T)
     </header>
     <main>
       {images.map(image =>
-        <img className={`${styles.image} ${selected === image ? styles.selected : ""}`} onClick={() => {
-          selected === image ? onSelect(selected) : setSelected(image)
-        }} src={image.url} alt={"Image"}/>
+        <img
+          className={`${styles.image} ${selected === image ? styles.selected : ""}`}
+          onClick={() => {
+            selected === image ? onSelect(selected) : setSelected(image)
+          }}
+          src={image.url}
+          alt={"Image"}
+          width={1}
+          height={1}
+        />
       )}
     </main>
 

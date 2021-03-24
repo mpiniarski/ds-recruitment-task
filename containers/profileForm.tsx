@@ -57,9 +57,7 @@ const ProfileForm = () => {
                     }}
                   />
                 )}>Change</Button>
-              {console.log(getValues())}
-              {console.log(getValues().avatarUrl)}
-              <img src={getValues().avatarUrl} alt={"Avatar"}/>
+              <img src={getValues().avatarUrl} alt={"Avatar"} width={1} height={1}/>
             </div>}
           </Field>
 
