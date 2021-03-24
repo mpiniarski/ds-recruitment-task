@@ -2,8 +2,8 @@ import {useStorageState} from "react-storage-hooks";
 import isBrowser from "utils/isBrowser";
 import serverSideStorage from "utils/serverSideStorage";
 import {sessionStorageKeys} from "consts";
-import {ProfileData} from "pages/profile-form";
 import {useRouter} from "next/router";
+import {ProfileData} from "models";
 
 const IndexPage = () => {
   const [profileData] = useStorageState<ProfileData>(

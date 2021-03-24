@@ -1,6 +1,5 @@
 import Form, {ErrorMessage, Field} from "@atlaskit/form"
 import TextField from "@atlaskit/textfield"
-import {ProfileData} from "pages";
 import styles from "./profileForm.module.scss"
 import InputMask from "react-input-mask"
 import Button from "@atlaskit/button";
@@ -17,6 +16,13 @@ import isBrowser from "utils/isBrowser";
 import serverSideStorage from "utils/serverSideStorage";
 import {sessionStorageKeys} from "consts"
 import {useRouter} from "next/router";
+import {ProfileData} from "models";
+
+
+enum ValidationError {
+  INVALID_EMAIL,
+  DATE_IN_FUTURE
+}
 
 const ProfileForm = () => {
   const [_, setFormData] = useStorageState<ProfileData>(
@@ -39,26 +45,34 @@ const ProfileForm = () => {
     >
       {({formProps, getValues}) => {
         return <form {...formProps}>
-
           <Field
             name="avatarUrl"
             isRequired={true}
             defaultValue={defaultAvatar}
           >
-            {({fieldProps}) => <div className={styles.avatarPicker}>
-              <Button
-                appearance="subtle"
-                onClick={() => showModal((closeModal) =>
-                  <ImagePicker
-                    images={avatars}
-                    onSelect={avatar => {
-                      fieldProps.onChange(avatar.url);
-                      closeModal();
-                    }}
-                  />
-                )}>Change</Button>
-              <img src={getValues().avatarUrl} alt={"Avatar"} width={1} height={1}/>
-            </div>}
+            {({fieldProps}) => {
+              const showImagePicker = () => showModal((closeModal) =>
+                <ImagePicker
+                  images={avatars}
+                  onSelect={avatar => {
+                    fieldProps.onChange(avatar.url);
+                    closeModal();
+                  }}
+                />
+              );
+              return <div className={styles.avatarPicker}>
+                <Button
+                  appearance="subtle"
+                  onClick={showImagePicker}
+                >Change</Button>
+                <img
+                  src={getValues().avatarUrl}
+                  alt={"Avatar"}
+                  onClick={showImagePicker}
+                  width={1}
+                  height={1}/>
+              </div>
+            }}
           </Field>
 
           <Field
