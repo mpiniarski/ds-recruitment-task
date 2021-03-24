@@ -1,3 +1,3 @@
 export const sessionStorageKeys = {
-  profileData: 'profile-data'
+  profileData: 'profile-data',
 };

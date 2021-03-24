@@ -1,14 +1,13 @@
-import styles from './index.module.scss'
-import ProfileForm from "containers/profileForm";
+import ProfileForm from "containers/profile-form";
 
 const IndexPage = () => (
-    <main>
-      <h1>
-        Profile form
-      </h1>
-      <ProfileForm/>
-    </main>
+  <main>
+    <h1>
+      Profile form
+    </h1>
+    <ProfileForm />
+  </main>
 
-)
+);
 
-export default IndexPage
+export default IndexPage;

@@ -1,8 +1,8 @@
-import {ProfileData} from "pages/profile-form";
-import styles from "./profile-info.module.scss"
+import styles from './profile-info.module.scss';
+import {ProfileData} from "models";
 
-const ProfileInfo = ({profileData}: { profileData: ProfileData }) => {
-  return <div className={styles.container}>
+const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
+  <div className={styles.container}>
     <div className={styles.data}>
       <dt>First name</dt>
       <dd>{profileData.firstName}</dd>
@@ -19,16 +19,18 @@ const ProfileInfo = ({profileData}: { profileData: ProfileData }) => {
       <dt>Phone number</dt>
       <dd>{profileData.phone}</dd>
 
-      {profileData.about && <>
-          <dt>About</dt>
-          <dd>{profileData.about}</dd>
-      </>}
+      {profileData.about && (
+      <>
+        <dt>About</dt>
+        <dd>{profileData.about}</dd>
+      </>
+      )}
     </div>
     <div className={styles.avatar}>
       <h3>Avatar:</h3>
-      <img src={profileData.avatarUrl} alt={"Avatar"} width={1} height={1}/>
+      <img src={profileData.avatarUrl} alt="Avatar" width={1} height={1} />
     </div>
   </div>
-}
+);
 
-export default ProfileInfo
+export default ProfileInfo;

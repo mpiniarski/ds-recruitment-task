@@ -54,6 +54,7 @@
 
   a {
     color: $global-gray-dark;
+
     &:hover {
       color: darken($global-gray-dark, $global-hover-darken);
     }
@@ -88,9 +89,11 @@
             "text2      text2"        auto
             "copyright copyright"   20px
           / auto auto;
+
     .links {
       padding: 0
     }
+
     .text1, .text2 {
       padding: 0;
     }

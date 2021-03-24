@@ -60,6 +60,7 @@ $menu-item-width: 160px;
   width: 30px;
 
   color: $global-gray-dark;
+
   &:hover {
     cursor: pointer;
     color: darken($global-gray-dark, $global-hover-darken);
