@@ -12,10 +12,10 @@
 
   gap: $global-spacing-medium 0;
   grid-template:
-            "socialMedia socialMedia" auto
-            "links       text"        auto
-            "copyright   copyright"   20px
-          / auto         40%;
+            "socialMedia socialMedia socialMedia" auto
+            "links       text1       text2"        auto
+            "copyright   copyright   copyright"   20px
+          / 30%          auto         30%;
 
   a {
     color: $global-gray-dark
@@ -60,8 +60,13 @@
   }
 }
 
-.text {
-  grid-area: text;
+.text1 {
+  grid-area: text1;
+  padding: 0 $global-spacing-big;
+}
+
+.text2 {
+  grid-area: text2;
   padding: 0 $global-spacing-big;
 }
 
@@ -71,19 +76,22 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  font-size: 12px;
 }
 
 @media (max-width: 1000px) {
   .footer {
     grid-template:
             "links     socialMedia" auto
-            "text      text"        auto
+            "text1      text1"        auto
+            "text2      text2"        auto
             "copyright copyright"   20px
           / auto auto;
     .links {
       padding: 0
     }
-    .text {
+    .text1, .text2 {
       padding: 0;
     }
   }
