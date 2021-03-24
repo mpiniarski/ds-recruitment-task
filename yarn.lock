@@ -478,7 +478,7 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/core" "^10.0.9"
 
-"@atlaskit/modal-dialog@^11.2.0":
+"@atlaskit/modal-dialog@^11.2.0", "@atlaskit/modal-dialog@^11.2.8":
   version "11.2.8"
   resolved "https://registry.yarnpkg.com/@atlaskit/modal-dialog/-/modal-dialog-11.2.8.tgz#a042c15a402e0c595b728be78a09093cce9961ef"
   integrity sha512-cDiAy8Uq7Ju8btIf87vZ3TV/6HZlSVPmLGG5MKl3VyQbWt6Fs+kvHOLvwHkBhG6T3Oqq3TZXz3ovLb3G0yQqCQ==

@@ -3,6 +3,7 @@ import type {AppProps} from 'next/app'
 import Header from "components/header";
 import Head from "next/head";
 import Footer from "components/footer";
+import {WithModal} from "components/modal";
 
 function MyApp({Component, pageProps}: AppProps) {
   return <>
@@ -11,9 +12,11 @@ function MyApp({Component, pageProps}: AppProps) {
       <link rel="icon" href="/favicon.ico"/>
     </Head>
 
-    <Header/>
-    <Component {...pageProps} />
-    <Footer/>
+    <WithModal>
+      <Header/>
+      <Component {...pageProps} />
+      <Footer/>
+    </WithModal>
   </>
 }
 

@@ -6,4 +6,21 @@
 
   padding: $global-spacing-big;
 
+  form {
+    button[type="submit"] {
+      margin-top: $global-spacing-medium;
+      float: right;
+    }
+  }
+}
+
+.avatarPicker {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  img {
+    width: 150px;
+  }
 }

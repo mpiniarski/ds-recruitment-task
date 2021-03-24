@@ -1,4 +1,4 @@
-import Form, {ErrorMessage, Field, FormFooter} from "@atlaskit/form"
+import Form, {ErrorMessage, Field} from "@atlaskit/form"
 import TextField from "@atlaskit/textfield"
 import {ProfileData} from "pages";
 import styles from "./profileForm.module.scss"
@@ -7,26 +7,68 @@ import Button from "@atlaskit/button";
 import TextArea from "@atlaskit/textarea";
 import {DatePicker} from "@atlaskit/datetime-picker";
 import {validate as validateEmail} from 'email-validator';
+import {useModal} from "components/modal";
+import ImagePicker from "components/image-picker";
+import {useMemo} from "react";
+
+function range(start: number, end: number) {
+  return [...Array(start + end).keys()].slice(start);
+}
+
+export const randomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
 
 const ProfileForm = () => {
   const formSubmit = (data) => console.log(data);
+  const {showModal} = useModal();
+
+  const avatars = range(1, 50).map(i => ({url: `images/avatars/${i}.png`}));
+  const defaultAvatar = useMemo(() => avatars[randomInt(0, avatars.length - 1)].url, []);
 
   return <div className={styles.container}>
     <Form<ProfileData> onSubmit={formSubmit}>
-      {({formProps}) =>
-        <form {...formProps}>
-          <Field<string> label="First name" name="firstName" isRequired={true}>
-            {({fieldProps}) =>
-              <TextField
-                {...fieldProps}
-              />}
+      {({formProps, getValues}) => {
+        return <form {...formProps}>
+
+          <Field
+            name="avatarUrl"
+            isRequired={true}
+            defaultValue={defaultAvatar}
+          >
+            {({fieldProps}) => <div className={styles.avatarPicker}>
+              <Button
+                appearance="subtle"
+                onClick={() => showModal((closeModal) =>
+                  <ImagePicker
+                    images={avatars}
+                    onSelect={avatar => {
+                      fieldProps.onChange(avatar.url);
+                      closeModal();
+                    }}
+                  />
+                )}>Change</Button>
+              {console.log(getValues())}
+              {console.log(getValues().avatarUrl)}
+              <img src={getValues().avatarUrl} alt={"Avatar"}/>
+            </div>}
           </Field>
 
-          <Field label="Last name" name="lastName" isRequired={true}>
+          <Field
+            label="First name"
+            name="firstName"
+            isRequired={true}
+          >
             {({fieldProps}) =>
-              <TextField
-                {...fieldProps}
-              />}
+              <TextField {...fieldProps}/>}
+          </Field>
+
+          <Field
+            label="Last name"
+            name="lastName"
+            isRequired={true}
+          >
+            {({fieldProps}) =>
+              <TextField {...fieldProps}/>}
           </Field>
 
           <Field
@@ -45,8 +87,11 @@ const ProfileForm = () => {
             </>}
           </Field>
 
-
-          <Field label="Phone number" name="phone" isRequired={true}>
+          <Field
+            label="Phone number"
+            name="phone"
+            isRequired={true}
+          >
             {({fieldProps}) => <InputMask mask="+99 999 999 999" {...fieldProps}>
               {(inputProps) =>
                 <TextField
@@ -61,7 +106,7 @@ const ProfileForm = () => {
             label="Birthday"
             name="birthday"
             isRequired={true}
-            validate={ value=> Date.parse(value) > new Date() && "DATE_IN_FUTURE"}
+            validate={value => Date.parse(value) > new Date() && "DATE_IN_FUTURE"}
           >
             {({fieldProps, error}) => <>
               <DatePicker
@@ -72,15 +117,10 @@ const ProfileForm = () => {
             </>}
           </Field>
 
-          <Field label="Your avatar" name="avatarUrl" isRequired={true}>
-            {({fieldProps}) => <>
-              <Button onClick={() => {
-                fieldProps.onChange("test")
-              }}>Choose avatar</Button>
-            </>}
-          </Field>
-
-          <Field label="About you" name="about">
+          <Field
+            label="About you"
+            name="about"
+          >
             {({fieldProps}) =>
               <TextArea
                 placeholder={"Interests, goals, what should others know about you..."}
@@ -90,12 +130,11 @@ const ProfileForm = () => {
               />}
           </Field>
 
-          <FormFooter>
-            <Button type="submit" appearance="primary">
-              Submit
-            </Button>
-          </FormFooter>
-        </form>
+          <Button type="submit" appearance="primary">
+            Submit
+          </Button>
+        </form>;
+      }
       }
     </Form>
   </div>
