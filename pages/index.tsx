@@ -12,7 +12,7 @@ export type ProfileData = {
 }
 
 const IndexPage = () => (
-    <main className={styles.container}>
+    <main>
       <h1>
         Profile form
       </h1>

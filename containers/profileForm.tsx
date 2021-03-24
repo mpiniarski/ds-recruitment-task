@@ -10,13 +10,8 @@ import {validate as validateEmail} from 'email-validator';
 import {useModal} from "components/modal";
 import ImagePicker from "components/image-picker";
 import {useMemo} from "react";
-
-function range(start: number, end: number) {
-  return [...Array(start + end).keys()].slice(start);
-}
-
-export const randomInt = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
+import range from "utils/range";
+import randomInt from "utils/randomInt";
 
 const ProfileForm = () => {
   const formSubmit = (data) => console.log(data);
