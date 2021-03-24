@@ -24,7 +24,8 @@ const Footer = () =>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ex mi, tristique et faucibus et, iaculis ut velit. Ut pretium purus tincidunt, porta massa in, sodales lacus. Sed ac feugiat purus, sit amet molestie enim. Donec eu turpis quis velit ullamcorper finibus. Pellentesque at velit nec magna tristique feugiat nec sit amet risus. Maecenas vel sapien ac ipsum commodo rutrum maximus et justo. Donec sapien neque, elementum nec molestie quis, gravida ut turpis. </p>
     </section>
     <section className={styles.copyright}>
-      Developed by © Marcin Piniarski
+      Developed by © Marcin Piniarski.
+      <div>Icons made by <a href="https://www.flaticon.com/authors/dighital" title="Dighital">Dighital</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </section>
   </footer>
 

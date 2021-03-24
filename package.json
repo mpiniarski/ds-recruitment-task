@@ -10,15 +10,24 @@
   "dependencies": {
     "@atlaskit/button": "^15.1.5",
     "@atlaskit/css-reset": "^6.0.5",
+    "@atlaskit/datetime-picker": "^10.0.10",
+    "@atlaskit/form": "^8.2.2",
+    "@atlaskit/media-picker": "^57.3.0",
     "@atlaskit/spinner": "^15.0.6",
+    "@atlaskit/textarea": "^4.0.2",
+    "@atlaskit/textfield": "^5.0.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/react-input-mask": "^3.0.0",
+    "email-validator": "^2.0.4",
     "next": "10.0.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.32.8"
+    "react-input-mask": "^2.0.4",
+    "sass": "^1.32.8",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.35",

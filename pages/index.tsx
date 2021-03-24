@@ -1,11 +1,24 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
+import styles from './index.module.scss'
+import ProfileForm from "containers/profileForm";
 
-export default () => (
-    <main>
+export type ProfileData = {
+  readonly firstName : string
+  readonly lastName : string
+  readonly email : string
+  readonly phone : string
+  readonly birthday : Date
+  readonly about : string
+  readonly avatarUrl : string
+}
+
+const IndexPage = () => (
+    <main className={styles.container}>
       <h1>
-        Dynamic Solutions - recruitment task
+        Profile form
       </h1>
+      <ProfileForm/>
     </main>
 
 )
+
+export default IndexPage
