@@ -1,4 +1,4 @@
-import Profile from "containers/profile"
+import ProfileInfo from "containers/profile-info"
 import {useStorageState} from "react-storage-hooks";
 import isBrowser from "utils/isBrowser";
 import serverSideStorage from "utils/serverSideStorage";
@@ -23,7 +23,7 @@ const ProfilePage = () => {
     <h1>
       Your profile
     </h1>
-    <Profile profileData={profileData}/>
+    <ProfileInfo profileData={profileData}/>
   </main>
 
 }
