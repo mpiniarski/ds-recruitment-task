@@ -31,5 +31,11 @@ body > [id="__next"] {
     margin-top: $global-spacing-big;
     margin-bottom: 3*$global-spacing-big;
 
+    &.withSpinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
   }
 }

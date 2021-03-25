@@ -16,7 +16,6 @@
     "@atlaskit/css-reset": "^6.0.5",
     "@atlaskit/datetime-picker": "^10.0.10",
     "@atlaskit/form": "^8.2.2",
-    "@atlaskit/media-picker": "^57.3.0",
     "@atlaskit/modal-dialog": "^11.2.8",
     "@atlaskit/spinner": "^15.0.6",
     "@atlaskit/textarea": "^4.0.2",

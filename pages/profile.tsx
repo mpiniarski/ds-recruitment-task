@@ -5,6 +5,7 @@ import { sessionStorageKeys } from 'consts';
 import { useRouter } from 'next/router';
 import { ProfileData } from 'models';
 import ProfileInfo from "components/profile-info";
+import Spinner from "@atlaskit/spinner";
 
 const ProfilePage = () => {
   let [profileData] = useStorageState<ProfileData>(
@@ -15,7 +16,9 @@ const ProfilePage = () => {
 
   if (profileData === null) {
     isBrowser() && router.push('profile-form');
-    return <></>;
+    return <main className={"withSpinner"}>
+      <Spinner size={"xlarge"}/>
+    </main>;
   }
 
   //Fix for Date deserialization missing in react-storage-hooks. Should be handled on communication with session storage.

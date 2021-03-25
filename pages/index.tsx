@@ -4,6 +4,7 @@ import serverSideStorage from 'utils/serverSideStorage';
 import { sessionStorageKeys } from 'consts';
 import { useRouter } from 'next/router';
 import { ProfileData } from 'models';
+import Spinner from '@atlaskit/spinner';
 
 const IndexPage = () => {
   const [profileData] = useStorageState<ProfileData>(
@@ -20,7 +21,9 @@ const IndexPage = () => {
     }
   }
 
-  return <></>;
+  return <main className={"withSpinner"}>
+    <Spinner size={"xlarge"}/>
+  </main>;
 };
 
 export default IndexPage;
