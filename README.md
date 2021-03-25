@@ -46,9 +46,8 @@ yarn typecheck
 - I've used React since this is my first choice technology for fronted development
 - I've used Typescript instead of JS because I like types :-)
 - I've used NextJs to present that I'm familiar with this technology. 
-  Also, it's easy to set up and makes some tasks easier.
+  Also, it's easy to set up and makes some tasks easier e.g. deployment to web.
   
 - I've set up eslint, because I believe that style consistency is important, even in a small project like this.
 - I've used Jest and Cypress for testing.
 - I've used SCSS with CSS-modules for styling. Other option might be CSS-in-JS solution like `styled-components` but I find SCSS more convenient for most tasks and more compatible with existing libraries (e.g. CSS frameworks). I would consider `styled-components` if created components were more complicated.
-- 
