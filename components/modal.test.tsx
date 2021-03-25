@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from '@jest/globals';
 import { useModal, WithModal } from './modal';
 
 const TestComponent = () => {
@@ -7,12 +6,12 @@ const TestComponent = () => {
   return (
     <>
       <button
-        data-testid="Button-ShowModal"
+        data-test="Button-ShowModal"
         onClick={() => {
           showModal((closeModal) => (
-            <div data-testid="Modal">
+            <div data-test="Modal">
               <h1>Test Modal</h1>
-              <button onClick={closeModal} data-testid="Button-CloseModal">Close</button>
+              <button onClick={closeModal} data-test="Button-CloseModal">Close</button>
             </div>
           ));
         }}

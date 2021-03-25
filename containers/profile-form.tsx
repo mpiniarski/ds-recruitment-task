@@ -36,9 +36,10 @@ const ProfileForm = () => {
   const defaultAvatar = useMemo(() => avatars[randomInt(0, avatars.length - 1)].url, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test={"ProfileForm"}>
       <Form<ProfileData>
         onSubmit={(data: ProfileData) => {
+          debugger
           setFormData(data);
           router.push('profile');
         }}
@@ -65,6 +66,7 @@ const ProfileForm = () => {
                     <Button
                       appearance="subtle"
                       onClick={showImagePicker}
+                      data-test={"Button-avatarUrl"}
                     >
                       Change
                     </Button>
@@ -74,6 +76,7 @@ const ProfileForm = () => {
                       onClick={showImagePicker}
                       width={1}
                       height={1}
+                      data-test={"avatarImage"}
                     />
                   </div>
                 );
@@ -85,7 +88,7 @@ const ProfileForm = () => {
               name="firstName"
               isRequired
             >
-              {({fieldProps}) => <TextField {...fieldProps} />}
+              {({fieldProps}) => <TextField {...fieldProps} data-test={"Input-firstName"}/>}
             </Field>
 
             <Field
@@ -93,7 +96,7 @@ const ProfileForm = () => {
               name="lastName"
               isRequired
             >
-              {({fieldProps}) => <TextField {...fieldProps} />}
+              {({fieldProps}) => <TextField {...fieldProps} data-test={"Input-lastName"}/>}
             </Field>
 
             <Field
@@ -114,6 +117,7 @@ const ProfileForm = () => {
                     placeholder="e.g. john.kowalsky@gmail.com"
                     type={"email"}
                     {...fieldProps}
+                    data-test={"Input-email"}
                   />
                   {error === ValidationError.INVALID_EMAIL && <ErrorMessage> Invalid email address</ErrorMessage>}
                 </>
@@ -131,13 +135,14 @@ const ProfileForm = () => {
                       placeholder="e.g. +48 656 767 878"
                       type={"phone"}
                       {...fieldProps}
+                      data-test={"Input-phone"}
                     />}
                 </InputMask>
               )}
             </Field>
 
-            <Field
-              label="Birthday"
+            <Field<Date>
+              label="Birthday date"
               name="birthday"
               isRequired={true}
               validate={(value) => {
@@ -149,13 +154,16 @@ const ProfileForm = () => {
               }}
             >
               {({fieldProps, error}) => (
-                <>
+                <div data-test={"Container-birthday"}>
                   <DatePicker
-                    placeholder="e.g. 25/02/1990 (dd/mm/yyyy)"
+                    placeholder="e.g. 25.03.1990 (dd.mm.yyyy)"
+                    locale={"pl-PL"}
                     {...fieldProps}
+                    value={fieldProps.value?.toISOString()}
+                    onChange={value=> {fieldProps.onChange(new Date(value))}}
                   />
                   {error === ValidationError.DATE_IN_FUTURE && <ErrorMessage>Birthdate cannot be in the future</ErrorMessage>}
-                </>
+                </div>
               )}
             </Field>
 
@@ -169,11 +177,12 @@ const ProfileForm = () => {
                   minimumRows={4}
                   resize="vertical"
                   {...fieldProps}
+                  data-test={"Input-about"}
                 />
               )}
             </Field>
 
-            <Button type="submit" appearance="primary">
+            <Button type="submit" appearance="primary" data-test={"Button-submit"}>
               Submit
             </Button>
           </form>

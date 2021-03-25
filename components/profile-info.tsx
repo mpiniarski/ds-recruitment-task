@@ -2,7 +2,7 @@ import styles from './profile-info.module.scss';
 import {ProfileData} from "models";
 
 const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
-  <div className={styles.container}>
+  <div className={styles.container} data-test={"ProfileInfo"}>
     <div className={styles.data}>
       <dt>First name</dt>
       <dd>{profileData.firstName}</dd>
@@ -11,7 +11,7 @@ const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
       <dd>{profileData.lastName}</dd>
 
       <dt>Birthday date</dt>
-      <dd>{profileData.birthday}</dd>
+      <dd>{profileData.birthday.toLocaleDateString("pl-PL")}</dd>
 
       <dt>Email address</dt>
       <dd>{profileData.email}</dd>
@@ -28,7 +28,13 @@ const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
     </div>
     <div className={styles.avatar}>
       <h3>Avatar:</h3>
-      <img src={profileData.avatarUrl} alt="Avatar" width={1} height={1} />
+      <img
+        src={profileData.avatarUrl}
+        alt="Avatar"
+        width={1}
+        height={1}
+        data-test={"avatarImage"}
+      />
     </div>
   </div>
 );

@@ -8,7 +8,7 @@ const ImagePicker = <T extends Image>({ onSelect, images }: { onSelect: (image: 
   const [selected, setSelected] = useState<T>();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-test={"ImagePicker"}>
       <header>
         <h1>Choose an image:</h1>
         <Button
@@ -18,11 +18,12 @@ const ImagePicker = <T extends Image>({ onSelect, images }: { onSelect: (image: 
             onSelect(selected);
           } : () => {
           }}
+          data-test={"Button-submit"}
         >
           Choose
         </Button>
       </header>
-      <main>
+      <main data-test={"images"}>
         {images.map((image, key) => (
           <img
             key={key}
