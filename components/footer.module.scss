@@ -15,7 +15,7 @@
             "socialMedia socialMedia socialMedia" auto
             "links       text1       text2"        auto
             "copyright   copyright   copyright"   20px
-          / 30%          auto         30%;
+          / 20%          auto         35%;
 
   a {
     color: $global-gray-dark
@@ -50,7 +50,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 40%;
 
   a {
     color: $global-gray-dark;

@@ -1,5 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import {configure, render, screen} from '@testing-library/react';
 import { useModal, WithModal } from './modal';
+
+configure({testIdAttribute: 'data-test'})
 
 const TestComponent = () => {
   const { showModal } = useModal();

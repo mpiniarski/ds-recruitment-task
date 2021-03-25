@@ -20,7 +20,8 @@ import styles from './profile-form.module.scss';
 
 const ValidationError = {
   INVALID_EMAIL: "INVALID_EMAIL",
-  DATE_IN_FUTURE: "DATE_IN_FUTURE"
+  DATE_IN_FUTURE: "DATE_IN_FUTURE",
+  INVALID_PHONE:" INVALID_PHONE"
 }
 
 const ProfileForm = () => {
@@ -33,10 +34,10 @@ const ProfileForm = () => {
   const router = useRouter();
 
   const avatars = range(1, 50).map((i) => ({url: `images/avatars/${i}.png`}));
-  const defaultAvatar = useMemo(() => avatars[randomInt(0, avatars.length - 1)].url, []);
+  const defaultAvatar = useMemo(() => avatars[randomInt(0, avatars.length - 1)], []);
 
   return (
-    <div className={styles.container} data-test={"ProfileForm"}>
+    <section className={styles.container} data-test={"ProfileForm"}>
       <Form<ProfileData>
         onSubmit={(data: ProfileData) => {
           debugger
@@ -49,7 +50,7 @@ const ProfileForm = () => {
             <Field
               name="avatarUrl"
               isRequired
-              defaultValue={defaultAvatar}
+              defaultValue={defaultAvatar.url}
             >
               {({fieldProps}) => {
                 const showImagePicker = () => showModal((closeModal) => (
@@ -59,6 +60,7 @@ const ProfileForm = () => {
                       fieldProps.onChange(avatar.url);
                       closeModal();
                     }}
+                    defaultValue={defaultAvatar}
                   />
                 ));
                 return (
@@ -127,9 +129,16 @@ const ProfileForm = () => {
             <Field
               label="Phone number"
               name="phone"
-              isRequired
+              isRequired={true}
+              validate={(value) => {
+                if (value !== undefined) {
+                  if (value.match(/\+\d\d \d\d\d \d\d\d \d\d\d/) === null) {
+                    return ValidationError.INVALID_PHONE
+                  }
+                }
+              }}
             >
-              {({fieldProps}) => (
+              {({fieldProps, error}) => <>
                 <InputMask mask="+99 999 999 999" {...fieldProps}>{()=>
                     <TextField
                       placeholder="e.g. +48 656 767 878"
@@ -138,7 +147,8 @@ const ProfileForm = () => {
                       data-test={"Input-phone"}
                     />}
                 </InputMask>
-              )}
+                {error === ValidationError.INVALID_PHONE && <ErrorMessage> Invalid phone number</ErrorMessage>}
+              </>}
             </Field>
 
             <Field<Date>
@@ -188,7 +198,7 @@ const ProfileForm = () => {
           </form>
         )}
       </Form>
-    </div>
+    </section>
   );
 };
 

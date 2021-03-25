@@ -1,16 +1,14 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebook, faInstagram, faLinkedin, faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faFacebook, faInstagram, faLinkedin, faTwitter,} from '@fortawesome/free-brands-svg-icons';
 import styles from './footer.module.scss';
 
 const Footer = () => (
   <footer className={styles.footer}>
     <section className={styles.socialMedia}>
-      <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
-      <FontAwesomeIcon className={styles.icon} icon={faFacebook} />
-      <FontAwesomeIcon className={styles.icon} icon={faInstagram} />
-      <FontAwesomeIcon className={styles.icon} icon={faLinkedin} />
+      <FontAwesomeIcon className={styles.icon} icon={faTwitter}/>
+      <FontAwesomeIcon className={styles.icon} icon={faFacebook}/>
+      <FontAwesomeIcon className={styles.icon} icon={faInstagram}/>
+      <FontAwesomeIcon className={styles.icon} icon={faLinkedin}/>
     </section>
     <section className={styles.links}>
       <h3>Links:</h3>
@@ -43,13 +41,14 @@ const Footer = () => (
     <section className={styles.copyright}>
       <span>
         Developed by © Marcin Piniarski. Icons made by
-        <a href="https://www.flaticon.com/authors/dighital" title="Dighital">Dighital</a>
+        {' '}
+        <a href="https://www.flaticon.com/authors/dighital" title="Dighital">
+          Dighital
+        </a>
         {' '}
         from
-        <a
-          href="https://www.flaticon.com/"
-          title="Flaticon"
-        >
+        {' '}
+        <a href="https://www.flaticon.com/" title="Flaticon">
           www.flaticon.com
         </a>
       </span>

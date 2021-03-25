@@ -4,11 +4,15 @@ import styles from './image-picker.module.scss';
 
 type Image = { url: string };
 
-const ImagePicker = <T extends Image>({ onSelect, images }: { onSelect: (image: T) => void, images: (T)[] }) => {
-  const [selected, setSelected] = useState<T>();
+const ImagePicker = <T extends Image>({ onSelect, images, defaultValue }: {
+  onSelect: (image: T) => void,
+  images: (T)[] ,
+  defaultValue?: T
+} ) => {
+  const [selected, setSelected] = useState<T | undefined>(defaultValue ?? undefined);
 
   return (
-    <div className={styles.container} data-test={"ImagePicker"}>
+    <section className={styles.container} data-test={"ImagePicker"}>
       <header>
         <h1>Choose an image:</h1>
         <Button
@@ -39,7 +43,7 @@ const ImagePicker = <T extends Image>({ onSelect, images }: { onSelect: (image: 
         ))}
       </main>
 
-    </div>
+    </section>
   );
 };
 

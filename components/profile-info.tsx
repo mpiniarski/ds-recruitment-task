@@ -2,7 +2,7 @@ import styles from './profile-info.module.scss';
 import {ProfileData} from "models";
 
 const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
-  <div className={styles.container} data-test={"ProfileInfo"}>
+  <section className={styles.container} data-test={"ProfileInfo"}>
     <div className={styles.data}>
       <dt>First name</dt>
       <dd>{profileData.firstName}</dd>
@@ -36,7 +36,7 @@ const ProfileInfo = ({ profileData }: { profileData: ProfileData }) => (
         data-test={"avatarImage"}
       />
     </div>
-  </div>
+  </section>
 );
 
 export default ProfileInfo;
