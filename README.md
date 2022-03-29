@@ -1,4 +1,6 @@
 This is a recruitment task for DynamicSolutions for Senior Fronted Developer role.
+It's a simple website with two subpages: user profile view and user information form used to udapte the profile.
+It's made in React and TypeScript and uses Atlaskit Design System implementation library.
 
 ## Getting Started
 Install dependencies:
